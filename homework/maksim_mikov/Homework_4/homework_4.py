@@ -3,13 +3,13 @@ my_dict = {'tuple': (11, 12, 13, 14, 15), 'list': [6, 7, 8, 9, 10],
            'set': {'Philadelphia Flyers', 'Washington Capitals', 'Minnesota Wild', 'Tampa Bay Lightning',
                    'New York Rangers'}}
 
-print(my_dict['tuple'][4])
+print(my_dict['tuple'][-1])
 
 my_dict['list'].append(25)
 my_dict['list'].pop(1)
 # print(my_dict['list'])
 
-my_dict['dict']['i am a tuple'] = 555
+my_dict['dict'][('i am a tuple',)] = 555
 del my_dict['dict']['two']
 # print(my_dict['dict'])
 
