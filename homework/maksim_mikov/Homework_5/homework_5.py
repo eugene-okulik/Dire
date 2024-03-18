@@ -26,7 +26,7 @@ print(int(str3[ind3:]) + 10)
 
 students = ['Ivanov', 'Petrov', 'Sidorov']
 subjects = ['math', 'biology', 'geography']
-surname1, surname2, surname3  = students
+surname1, surname2, surname3 = students
 subject1, subject2, subject3 = subjects
 
 print(f'Students {surname1}, {surname2}, {surname3} study these subjects: {subject1}, {subject2}, {subject3}')
