@@ -1,7 +1,9 @@
 import re
 
-string = 'Etiam tincidunt neque erat, quis molestie enim imperdiet vel. ' \
-        'Integer urna nisl, facilisis vitae semper at, dignissim vitae libero '
+string = (
+        'Etiam tincidunt neque erat, quis molestie enim imperdiet vel. '
+        + 'Integer urna nisl, facilisis vitae semper at, dignissim vitae libero'
+)
 
 split_string = re.findall(r'\w+|[.,]', string)
 # print(words_and_punctuation)
