@@ -7,7 +7,6 @@ split_string = re.findall(r'\w+|[.,]', string)
 # print(words_and_punctuation)
 
 transformed_list = []
-
 # Проходим по каждому элементу в списке
 for word in split_string:
     # Если элемент является словом, добавляем 'ing'
