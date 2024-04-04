@@ -1,15 +1,13 @@
 def finish_me(func):
-    def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
-        return result
-
+    def wrapper(text, count):
+        for _ in range(count):
+            func(text)
     return wrapper
 
 
 @finish_me
-def example(text, count=1):
-    for _ in range(count):
-        print(text)
+def example(text):
+    print(text)
 
 
 example('print me', count=2)
