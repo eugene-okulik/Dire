@@ -11,7 +11,7 @@ class Book:
 
     def reserve(self):
         if self.reserved:
-            return f"зарезервирована"
+            return "зарезервирована"
 
     def __str__(self):
         reserve_status = self.reserve() if self.reserved else ''
