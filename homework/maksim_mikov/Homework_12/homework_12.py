@@ -23,7 +23,7 @@ class Bouquet:
         return sorted(self.flowers, key=lambda fl: getattr(fl, attribute))
 
     def time_life_bouquet(self):
-        return sum(fl.freshness for fl in self.flowers)/len(self.flowers)
+        return sum(fl.freshness for fl in self.flowers) / len(self.flowers)
 
     def find_by_timelife(self, min_timelife):
         return [fl for fl in self.flowers if fl.freshness >= min_timelife]
