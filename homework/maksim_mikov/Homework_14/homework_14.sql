@@ -4,11 +4,11 @@
 
 --- Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
 
-    INSERT INTO** books (title, taken_by_student_id) VALUES ('Ангелы и демоны', 1104)
+    INSERT INTO books (title, taken_by_student_id) VALUES ('Ангелы и демоны', 1104)
 
-    INSERT INTO** books (title, taken_by_student_id) VALUES ('Происхождение', 1104)
+    INSERT INTO books (title, taken_by_student_id) VALUES ('Происхождение', 1104)
 
-    INSERT INTO** books (title, taken_by_student_id) VALUES ('Код Да Винчи', 1104)
+    INSERT INTO books (title, taken_by_student_id) VALUES ('Код Да Винчи', 1104)
 
 --- Создайте группу (group) и определите своего студента туда
 
