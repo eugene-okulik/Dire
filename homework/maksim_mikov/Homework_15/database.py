@@ -79,11 +79,11 @@ print('')
 # оценки с названиями занятий и предметов (всё одним запросом с использованием `Join`)
 query = f'''
 SELECT st.id, st.name , st.second_name, st.group_id,
-	g.title AS group_title,
-	bk.title AS book_title,
-	mk.value AS mark_value,
-	ls.title AS lesson_title,
-	sb.title AS subject_title
+g.title AS group_title,
+bk.title AS book_title,
+mk.value AS mark_value,
+ls.title AS lesson_title,
+sb.title AS subject_title
 FROM students st
     JOIN `groups` g ON st.group_id = g.id
     LEFT JOIN books bk ON st.id = bk.taken_by_student_id
