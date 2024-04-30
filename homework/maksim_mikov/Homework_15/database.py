@@ -10,26 +10,39 @@ db = mysql.connect(
 
 cursor = db.cursor(dictionary=True)
 
-# Создайте группу (group)
-cursor.execute("INSERT INTO `groups` (title, start_date, end_date) VALUES ('Snow_Bars', 'mar 2024', 'may 2024')")
-group_id = cursor.lastrowid
-print('group_id: ', group_id)
-cursor.execute(f"SELECT * FROM `groups` WHERE id = {group_id}")
-print(cursor.fetchone())
-print('')
-
-# Создайте студента (student) и определите своего студента в группу
-cursor.execute(f"INSERT INTO students (name, second_name, group_id) VALUES ('Max', 'Hansen', {group_id})")
+# Создайте студента (student)
+insert_query = "INSERT INTO students (name, second_name, group_id) VALUES (%s, %s, %s)"
+val = ('Max', 'Hansen', None)
+cursor.execute(insert_query, val)
 student_id = cursor.lastrowid
 print('student_id: ', student_id)
 cursor.execute(f"SELECT * FROM students WHERE id = {student_id}")
 print(cursor.fetchone())
 print('')
 
+# Создайте группу (group) и определите своего студента в группу
+insert_query = "INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
+val = ('Snow_Bars', 'mar 2024', 'may 2024')
+cursor.execute(insert_query, val)
+group_id = cursor.lastrowid
+print('group_id: ', group_id)
+cursor.execute(f"SELECT * FROM `groups` WHERE id = {group_id}")
+print(cursor.fetchone())
+update_query = "UPDATE students SET group_id = %s WHERE id = %s"
+val = (group_id, student_id)
+cursor.execute(update_query, val)
+cursor.execute(f"SELECT * FROM students WHERE id = {student_id}")
+print(cursor.fetchone())
+print('')
+
 # Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
-cursor.execute(f"INSERT INTO books (title, taken_by_student_id) VALUES ('Ангелы и демоны 2', {student_id})")
-cursor.execute(f"INSERT INTO books (title, taken_by_student_id) VALUES ('Происхождение 2', {student_id})")
-cursor.execute(f"INSERT INTO books (title, taken_by_student_id) VALUES ('Код Да Винчи 2', {student_id})")
+insert_query = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
+val = [
+    ('Ангелы и демоны 2', student_id),
+    ('Происхождение 2', student_id),
+    ('Код Да Винчи 2', student_id)
+]
+cursor.executemany(insert_query, val)
 
 # Создайте несколько учебных предметов (subjects)
 cursor.execute("INSERT INTO subjets (title) VALUES ('SQL_subj v.2')")
@@ -41,16 +54,24 @@ print('subject_id_2: ', subject_id_2)
 print('')
 
 # Создайте по два занятия для каждого предмета (lessons)
-cursor.execute(f"INSERT INTO lessons (title, subject_id) VALUES ('Insert 2', {subject_id_1})")
+insert_query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
+val = ('Insert 2', subject_id_1)
+cursor.execute(insert_query, val)
 lesson_id_1 = cursor.lastrowid
 print('lesson_id_1: ', lesson_id_1)
-cursor.execute(f"INSERT INTO lessons (title, subject_id) VALUES ('Select 2', {subject_id_1})")
+insert_query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
+val = ('Select 2', subject_id_1)
+cursor.execute(insert_query, val)
 lesson_id_2 = cursor.lastrowid
 print('lesson_id_2: ', lesson_id_2)
-cursor.execute(f"INSERT INTO lessons (title, subject_id) VALUES ('Functions 2', {subject_id_2})")
+insert_query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
+val = ('Functions 2', subject_id_2)
+cursor.execute(insert_query, val)
 lesson_id_3 = cursor.lastrowid
 print('lesson_id_3: ', lesson_id_3)
-cursor.execute(f"INSERT INTO lessons (title, subject_id) VALUES ('OOP 2', {subject_id_2})")
+insert_query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
+val = ('OOP 2', subject_id_2)
+cursor.execute(insert_query, val)
 lesson_id_4 = cursor.lastrowid
 print('lesson_id_4: ', lesson_id_4)
 print('')
