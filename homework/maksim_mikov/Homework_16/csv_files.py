@@ -33,7 +33,7 @@ def fetch_data_from_db():
     # Запрос из БД
     cursor = db.cursor(dictionary=True)
 
-    query = f'''
+    query = '''
     SELECT st.name , st.second_name,
     g.title AS group_title,
     bk.title AS book_title,
@@ -45,7 +45,7 @@ def fetch_data_from_db():
         LEFT JOIN books bk ON st.id = bk.taken_by_student_id
         LEFT JOIN marks mk ON st.id = mk.student_id
         LEFT JOIN lessons ls ON mk.lesson_id = ls.id
-        LEFT JOIN subjets sb ON ls.subject_id = sb.id    
+        LEFT JOIN subjets sb ON ls.subject_id = sb.id
     '''
     cursor.execute(query)
     db_data = cursor.fetchall()
