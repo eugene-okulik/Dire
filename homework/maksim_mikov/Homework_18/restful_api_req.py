@@ -22,7 +22,8 @@ def new_object():
 
 
 def clear(object_id):
-    response = requests.post(f'https://api.restful-api.dev/objects/{object_id}')
+    response = requests.delete(f'https://api.restful-api.dev/objects/{object_id}')
+    print('clear :', response.json())
 
 
 def update_object():
@@ -81,4 +82,4 @@ def delete_object():
     print(response.status_code)
 
 
-delete_object()
+# delete_object()

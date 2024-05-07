@@ -58,6 +58,7 @@ def new_post():
 
 def clear(post_id):
     response = requests.delete(f'https://jsonplaceholder.typicode.com/posts/{post_id}')
+    print('clear :', response.json())
 
 
 def put_a_post():
